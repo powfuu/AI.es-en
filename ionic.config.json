@@ -1,0 +1,7 @@
+{
+  "name": "ai-english",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
