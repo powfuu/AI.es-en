@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<resources>
+    <string name="app_name">AI.es/en</string>
+    <string name="title_activity_main">ai-assistant</string>
+    <string name="package_name">ev.ai.englishspanish.assistant</string>
+    <string name="custom_url_scheme">ev.ai.englishspanish.assistant</string>
+</resources>

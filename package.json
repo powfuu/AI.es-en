@@ -15,8 +15,11 @@
     "lint": "ng lint",
     "config-trapeze": "VERSION_NAME=$npm_package_version VERSION_CODE=$npm_package_config_versionCode npx trapeze run config/config.yml -y",
     "build-ios": "rm -rf ios/ android/ && npx cap add ios && npm run config-trapeze && ng build && npx cap sync ios",
+    "build-android": "rm -rf ios/ android/ && npx cap add android && npm run config-trapeze && ng build && npx cap sync android",
     "open-ios": "npx cap open ios",
-    "ios": "rm -rf ios/ && npx cap add ios && npm run build-ios && npx ionic capacitor run ios --livereload --external"
+    "open-android": "npx cap open android",
+    "ios": "rm -rf android/ ios/ && npx cap add ios && npm run build-ios && npx ionic capacitor run ios --livereload --external",
+    "android": "rm -rf android/ ios/ && npx cap add android && npm run build-android && npx ionic capacitor run android --livereload --external"
   },
   "private": true,
   "dependencies": {

@@ -3,7 +3,7 @@ import { KeyboardResize } from '@capacitor/keyboard';
 
 const config: CapacitorConfig = {
   appId: 'ev.ai.englishspanish.assistant',
-  appName: 'ai-assistant',
+  appName: 'AI.es/en',
   webDir: 'www',
   server: {
     androidScheme: 'https',

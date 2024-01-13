@@ -23,3 +23,69 @@ platforms:
             dest: App/Assets.xcassets/AppIcon.appiconset
           - src: ../../resources/ios/splash
             dest: App/Assets.xcassets/Splash.imageset
+  android:
+        appName: AI.es/en
+        versionName: "$VERSION_NAME"
+        versionCode: "$VERSION_CODE"
+        packageName: ev.ai.englishspanish.assistant
+        gradle:
+            - file: variables.gradle
+              target:
+                  ext:
+              insertType: "variable"
+              insert: |
+                  minSdkVersion = 22
+                  compileSdkVersion = 33
+                  targetSdkVersion = 33
+                  androidxAppCompatVersion =  '1.6.1'
+                  androidxCoreVersion = '1.10.0'
+                  androidxCoordinatorLayoutVersion = '1.2.0'
+                  firebaseMessagingVersion = '23.0.5'
+                  playServicesLocationVersion = '21.0.1'
+                  junitVersion = '4.13.2'
+                  androidxJunitVersion = '1.1.5'
+                  androidxEspressoCoreVersion = '3.5.1'
+                  cordovaAndroidVersion = '10.1.1'
+                  coreSplashScreenVersion = '1.0.0'
+        xml:
+            - file: app/src/main/res/values/styles.xml
+              target: resources/style[@name="AppTheme.NoActionBarLaunch"]
+              inject: |
+                  <item name="android:windowSplashScreenBackground">#ffffff</item>
+        res:
+            - path: mipmap-hdpi
+              file: ic_launcher.png
+              source: resources/android/icon/ic_launcher.png
+            - path: mipmap-hdpi
+              file: ic_launcher_foreground.png
+              source: resources/android/icon/ic_launcher.png
+            - path: mipmap-hdpi
+              file: ic_launcher_round.png
+              source: resources/android/icon/ic_launcher_round.png
+            - path: mipmap-xxxhdpi
+              file: ic_launcher.png
+              source: resources/android/icon/ic_launcher.png
+            - path: mipmap-xxxhdpi
+              file: ic_launcher_foreground.png
+              source: resources/android/icon/ic_launcher.png
+            - path: mipmap-xxxhdpi
+              file: ic_launcher_round.png
+              source: resources/android/icon/ic_launcher_round.png
+            - path: mipmap-xxhdpi
+              file: ic_launcher.png
+              source: resources/android/icon/ic_launcher.png
+            - path: mipmap-xxhdpi
+              file: ic_launcher_foreground.png
+              source: resources/android/icon/ic_launcher.png
+            - path: mipmap-xxhdpi
+              file: ic_launcher_round.png
+              source: resources/android/icon/ic_launcher_round.png
+            - path: mipmap-xhdpi
+              file: ic_launcher.png
+              source: resources/android/icon/ic_launcher.png
+            - path: mipmap-xhdpi
+              file: ic_launcher_foreground.png
+              source: resources/android/icon/ic_launcher.png
+            - path: mipmap-xhdpi
+              file: ic_launcher_round.png
+              source: resources/android/icon/ic_launcher_round.png
