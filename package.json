@@ -1,6 +1,9 @@
 {
   "name": "ai-english",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "config": {
+    "versionCode": 10000
+  },
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
   "scripts": {
@@ -9,7 +12,11 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "config-trapeze": "VERSION_NAME=$npm_package_version VERSION_CODE=$npm_package_config_versionCode npx trapeze run config/config.yml -y",
+    "build-ios": "rm -rf ios/ android/ && npx cap add ios && npm run config-trapeze && ng build && npx cap sync ios",
+    "open-ios": "npx cap open ios",
+    "ios": "rm -rf ios/ && npx cap add ios && npm run build-ios && npx ionic capacitor run ios --livereload --external"
   },
   "private": true,
   "dependencies": {
@@ -21,13 +28,20 @@
     "@angular/platform-browser": "^17.0.2",
     "@angular/platform-browser-dynamic": "^17.0.2",
     "@angular/router": "^17.0.2",
+    "@capacitor/android": "^5.6.0",
     "@capacitor/app": "5.0.6",
     "@capacitor/core": "5.6.0",
     "@capacitor/haptics": "5.0.6",
-    "@capacitor/keyboard": "5.0.7",
+    "@capacitor/ios": "^5.6.0",
+    "@capacitor/keyboard": "^5.0.7",
+    "@capacitor/preferences": "^5.0.6",
+    "@capacitor/splash-screen": "^5.0.6",
     "@capacitor/status-bar": "5.0.6",
-    "@ionic/angular": "^7.5.0",
-    "ionicons": "^7.2.1",
+    "@ionic/angular": "^7.0.0",
+    "@ngrx/effects": "^17.0.1",
+    "@ngrx/store": "^17.0.1",
+    "@trapezedev/configure": "^7.0.10",
+    "ionicons": "^7.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"

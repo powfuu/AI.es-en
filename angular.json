@@ -21,7 +21,7 @@
             "outputPath": "www",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": ["src/polyfills.ts"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -57,9 +57,9 @@
               "outputHashing": "all"
             },
             "development": {
-              "buildOptimizer": false,
-              "optimization": false,
+              "buildOptimizer": true,
               "vendorChunk": true,
+              "optimization": false,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true

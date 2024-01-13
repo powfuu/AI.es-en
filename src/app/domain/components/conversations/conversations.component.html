@@ -1,0 +1,28 @@
+<ion-content>
+  <div class="title-header">
+    <ion-icon color="primary" class="logo-chat" name="logo-ionitron"></ion-icon>
+    <p class="conversations-title">AI Conversations </p>
+    <ion-icon (click)="generateNewConversation()" color="primary" class="add-conversation" name="add-circle"></ion-icon>
+  </div>
+  <ion-searchbar [(ngModel)]="key" (keyup)="filterChats()" class="ion-no-padding search-conversations"
+    placeholder="Search..."></ion-searchbar>
+  <div class="conversations">
+    @for(conversation of filteredConversations; track conversation) {
+    <ion-item-sliding (click)="openChat(conversation.id)" class="sliding-conversation"
+      (ionDrag)="removeAIConversation($event, conversation.id)">
+      <ion-item class="chat">
+        <ion-icon [name]="conversation.icon"></ion-icon>
+        <p class="title">
+          {{conversation.category}} <span>({{conversation.id}})</span>
+        </p>
+        <p class="subtitle">
+          {{ getLastMessage(conversation?.messages)}}
+        </p>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option style="width: 120px; font-size:14px;" color="primary">Remove</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+    }
+  </div>
+</ion-content>

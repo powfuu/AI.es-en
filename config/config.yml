@@ -1,0 +1,25 @@
+vars:
+  VERSION_NAME:
+  VERSION_CODE:
+
+platforms:
+  ios:
+    targets:
+      App:
+        version: "$VERSION_NAME"
+        buildNumber: "$VERSION_CODE"
+        bundleId: ev.ai.englishspanish.assistant
+        displayName: AI.es/en
+        # TODO: App -> Para ejecutarlo en livereload, cambiar para version en prod
+        productName: App # productName: AI English
+        plist:
+          replace: true
+          entries:
+            - CFBundleURLTypes:
+                - CFBundleURLSchemes:
+                    - evaieng
+        copy:
+          - src: ../../resources/ios/icon
+            dest: App/Assets.xcassets/AppIcon.appiconset
+          - src: ../../resources/ios/splash
+            dest: App/Assets.xcassets/Splash.imageset

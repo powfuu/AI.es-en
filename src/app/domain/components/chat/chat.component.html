@@ -1,0 +1,41 @@
+<ng-container *ngIf="(conversations$ | async) as conversations">
+  <ng-container *ngIf="getConversation(conversations) as chat">
+    <ion-header>
+      <ion-icon (click)="back()" class="back" name="arrow-down"></ion-icon>
+      <div class="title-header-container">
+        <div class="logo-title">
+          <ion-icon class="logo" [name]="chat.icon"></ion-icon>
+          <p>{{chat.category}}</p>
+        </div>
+        <p class="subtitle">AI Chat</p>
+      </div>
+      <ion-icon class="options" (click)="openMenuHeader()" name="menu-outline"></ion-icon>
+    </ion-header>
+    <ion-content>
+      <div id="main-content">
+
+      </div>
+      <ion-menu side="end" menuId="menu-header" contentId="main-content">
+        <div class="item-remove-chat">
+          <p>Remove AI Chat: {{chat.category}}</p>
+          <ion-icon (click)="removeChat(chat.id)" class="options" name="trash"></ion-icon>
+        </div>
+      </ion-menu>
+      <div #conversationsContainer class="messages-container">
+        @for(messageProperties of chat.messages; track messageProperties) {
+        <div
+          [class]="messageProperties.sender === 'system' ? 'message-container system animated' : 'message-container user animated'">
+          <p class="message">
+            {{messageProperties.message}}</p>
+        </div>
+        }
+      </div>
+      <div class="bottom-container">
+        <ion-searchbar [(ngModel)]="message" search-icon="chatbubble-ellipses" class="message-field"
+          placeholder="Type a message"></ion-searchbar>
+        <ion-icon [class]="gptIsAnswering ? 'disabled' : 'enabled'" (click)="gptIsAnswering ? null : sendMessage(chat)"
+          name="send"></ion-icon>
+      </div>
+    </ion-content>
+  </ng-container>
+</ng-container>

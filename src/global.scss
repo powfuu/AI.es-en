@@ -24,3 +24,78 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+
+* {
+  font-family: Montserrat, Montserrat-Fixed, Avenir, "Avenir Next LT Pro",
+    Corbel, "URW Gothic", source-sans-pro, sans-serif;
+}
+
+body {
+  padding-top: 45px;
+}
+
+ion-input {
+  input {
+    caret-color: var(--ion-color-primary) !important;
+  }
+}
+ion-app {
+  margin-top: env(safe-area-inset-top);
+}
+ion-searchbar {
+  .searchbar-input-container {
+    input {
+      caret-color: var(--ion-color-primary) !important;
+      font-size: 14px !important;
+      background: rgb(240, 240, 240) !important;
+      text-overflow: ellipsis !important;
+      padding-left: 42px !important;
+    }
+    ion-icon {
+      color: var(--ion-color-primary) !important;
+      padding-left: 5px !important;
+    }
+  }
+}
+.search-linguistic-insight {
+  min-width: 86%;
+  .searchbar-input-container {
+    input {
+      font-size: 14px !important;
+      border-top-right-radius: 12px !important;
+      border-bottom-right-radius: 12px !important;
+    }
+  }
+}
+.search-conversations {
+  .searchbar-input-container {
+    input {
+      font-size: 14px !important;
+    }
+  }
+}
+
+.message-field {
+  .searchbar-input-container {
+    input {
+      background: #fff !important;
+      height: 42px !important;
+      color: #6b6f77 !important;
+    }
+  }
+}
+
+.animated {
+  animation: zoomIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes zoomIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

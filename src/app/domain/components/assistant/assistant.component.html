@@ -1,0 +1,25 @@
+<ion-content>
+  <ng-container *ngIf="(conversations$ | async) as conversations">
+    @if(conversations.length > 0) {
+    <app-conversations [conversations]="conversations"></app-conversations>
+    } @else {
+    <ion-header>
+      <div class="header-app">
+        <ion-icon class="logo-chat" name="logo-ionitron"></ion-icon>
+        <p>Conversational assistant AI</p>
+      </div>
+      <h6 class="subtitle">
+        Start talking with me and improve your conversationals skills.
+      </h6>
+    </ion-header>
+    <div class="no-messages-container">
+      <img src="assets/no_messages.png" alt="Empty" />
+      <p>There's no conversations added yet.</p>
+      <ion-button (click)="addConversation()">
+        <ion-icon name="add"></ion-icon>
+        Generate a new AI conversation
+      </ion-button>
+    </div>
+    }
+  </ng-container>
+</ion-content>

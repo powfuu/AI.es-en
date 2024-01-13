@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-icon name="logo-ionitron"></ion-icon>
+  <p>Generate AI Chat</p>
+</ion-header>
+<ion-content>
+  <div class="form-container">
+    <h6>Conversation category (example: animals or business)</h6>
+    <ion-searchbar (keyup)="onSearchChange()" search-icon="chatbubble-ellipses"
+      placeholder='Example: "Chat about videogames!"' [(ngModel)]="conversationCategory"></ion-searchbar>
+    <h6>Conversation icon</h6>
+    <div class="logo-selector">
+      @for(icon of icons; track icon) {
+      <ion-icon [class]="isSelected(icon.name) ? 'selected' : ''" (click)="selectIcon(icon.name)"
+        [name]="icon.name"></ion-icon>
+      }
+    </div>
+  </div>
+  <div class="buttons-container">
+    <ion-button class="cancel" (click)="cancel()">Cancel</ion-button>
+    <ion-button class="confirm" (click)="confirm()">Generate AI Chat</ion-button>
+  </div>
+</ion-content>

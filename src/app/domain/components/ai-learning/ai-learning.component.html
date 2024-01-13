@@ -1,0 +1,76 @@
+<ion-content>
+  <ion-header class="top-content-wrapper">
+    <ion-searchbar class="ion-no-padding search-linguistic-insight"
+      placeholder="Input any word, definition or sentence." [(ngModel)]="input" type="text"></ion-searchbar>
+    <ion-icon (click)="getInformationAbout(input)" icon="arrow-forward"></ion-icon>
+  </ion-header>
+  <div class="content-wrapper">
+    <div class="header-wrapper">
+      <div>
+        <ion-icon icon="logo-apple-ar"></ion-icon>
+        <h1>Linguistic Insights AI</h1>
+      </div>
+      <p>Get a translation and information about your interests.</p>
+    </div>
+    <div *ngIf="suggestions$ | async as suggests">
+      <p class="suggestion-title">Suggestions</p>
+      <div class="suggestions-wrapper">
+        @for(suggestion of suggests; track suggestion; let i = $index) {
+        <p (click)="!isLoadingLinguisticInsights ? getInformationAbout(suggestion) : null"
+          [class]="!isLoadingLinguisticInsights ? suggestion === selectedData ? 'selected_suggestion' : 'suggestion'  : 'suggestion_disabled'">
+          {{
+          suggestion }}</p>
+        }
+      </div>
+    </div>
+    @if(isLoading) {
+    <ion-skeleton-text animated="true" style="height: 20px; margin-bottom: -14px" class="skeleton"></ion-skeleton-text>
+    <br />
+    <div class="suggestions-wrapper skeleton-container">
+      <ion-skeleton-text animated="true" class="skeleton"></ion-skeleton-text>
+      <ion-skeleton-text animated="true" class="skeleton"></ion-skeleton-text>
+      <ion-skeleton-text animated="true" class="skeleton"></ion-skeleton-text>
+      <ion-skeleton-text animated="true" class="skeleton"></ion-skeleton-text>
+      <ion-skeleton-text animated="true" class="skeleton"></ion-skeleton-text>
+      <ion-skeleton-text animated="true" class="skeleton"></ion-skeleton-text>
+      <ion-skeleton-text animated="true" class="skeleton"></ion-skeleton-text>
+    </div>
+    }
+
+    @if(!isLoadingLinguisticInsights) {
+    <div *ngIf="result | async as res">
+      <div class="selected-data-container">
+        <p class="response-translation">
+          {{selectedData}}<span> - {{res.translation}}</span>
+        </p>
+        <p class="response-meaning">{{res.meaning}}</p>
+        <p class="response-description">{{res.description}}</p>
+      </div>
+
+    </div>
+    }
+    @if(isLoadingLinguisticInsights) {
+    <div class="empty-div">
+      <ion-skeleton-text animated="true" class="skeleton-title"></ion-skeleton-text>
+      <ion-skeleton-text animated="true" class="skeleton-description"></ion-skeleton-text>
+      <ion-skeleton-text animated="true" class="skeleton-title"></ion-skeleton-text>
+      <ion-skeleton-text animated="true" class="skeleton-description"></ion-skeleton-text>
+      <ion-skeleton-text animated="true" class="skeleton-title"></ion-skeleton-text>
+      <ion-skeleton-text animated="true" class="skeleton-description"></ion-skeleton-text>
+      <ion-skeleton-text animated="true" class="skeleton-title"></ion-skeleton-text>
+      <ion-skeleton-text animated="true" class="skeleton-description"></ion-skeleton-text>
+      <ion-skeleton-text animated="true" class="skeleton-title"></ion-skeleton-text>
+      <ion-skeleton-text animated="true" class="skeleton-description"></ion-skeleton-text>
+    </div>
+    }
+    @if(!result && !isLoadingLinguisticInsights) {
+    <div class="empty-div">
+      <img class="empty_data" src="assets/no_data.png" alt="Empty" />
+      <p class="empty_data_text">
+        Select any suggestion or start searching for something of your
+        interests.
+      </p>
+    </div>
+    }
+  </div>
+</ion-content>
